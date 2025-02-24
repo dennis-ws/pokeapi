@@ -45,15 +45,29 @@ function App() {
     <>
       <form onSubmit={handleSubmit}>
         <input name="query"/>
+        <button type="submit">Search</button>
       </form>
 
       {/* If error occur, display error */}
       {error && <p style={{color: 'red'}}>{error}</p>}
 
-      {/* Display pokemon if no error occurred */}
+      {/* Display the default pokemon sprite if no error occurred */}
       {pokemonData && (
         <div>
-          <img src={pokemonData.sprites.front_default}/>
+            <img src={pokemonData.sprites.front_default} alt="front default"/>
+            <img src={pokemonData.sprites.back_default} alt="back default"/>
+            <img src={pokemonData.sprites.front_shiny} alt="front shiny"/>
+            <img src={pokemonData.sprites.back_shiny} alt="back shiny"/>
+        </div>
+      )}
+
+      {/* Display the female variant if it exists */}
+      {pokemonData.sprites.front_female && (
+        <div>
+          <img src={pokemonData.sprites.front_female} alt="front female"/>
+          <img src={pokemonData.sprites.back_female} alt="back female"/>  
+          <img src={pokemonData.sprites.front_shiny_female} alt="front shiny female"/>
+          <img src={pokemonData.sprites.back_shiny_female} alt="back shiny female"/>
         </div>
       )}
     </>
